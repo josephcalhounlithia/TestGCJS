@@ -1,5 +1,29 @@
 console.log("Loaded custom scripting....")
 
+window.fsAttributes.push([
+  'cmsload',
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (listInstances) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [listInstance] = listInstances.filter((item) => {
+      return item.wrapper === $select(SELECTORS.CMS_COLLECTION);
+    });
+
+    actionsPage(listInstance);
+    sortPage();
+  },
+]);
+
+function actionsPage(listInstance) {
+  //this method will decide if is necessary open some panel based on url params
+  const cars = WindowController.extractCarParams();
+  if (cars.length === 0) return;
+
+  if (cars.length > 1) return WindowController.openComparator(listInstance.items, cars);
+
+  WindowController.openDetails(listInstance, cars);
+}
+
 class Car {
   _id = '';
   _name = '';
