@@ -1,4 +1,6 @@
-export class Car {
+console.log("Loaded custom scripting....")
+
+class Car {
   _id = '';
   _name = '';
   _year = '';
