@@ -1,4 +1,4 @@
-console.log("Hi Tam")
+console.log("Hi Tam");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
