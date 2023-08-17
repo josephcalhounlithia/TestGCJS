@@ -1,4 +1,4 @@
-console.log("Hi Tam");
+console.log("Hi Tam v2");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -1005,12 +1005,14 @@ function closeAll() {
 }
 
 function collapseDetails() {
+  console.log("collapseDetails");
   $('.gc-accordion').addClass('gc-collapse');
   $('.gc-collapse-btn').text('Expand');
   $('.gc-collapse-btn').removeClass('gc-accordion-expanded');
 }
 
 function expandDetails() {
+  console.log("expandDetails");
   $('.gc-accordion').removeClass('gc-collapse');
   $('.gc-collapse-btn').text('Collapse');
   $('.gc-collapse-btn').addClass('gc-accordion-expanded');
