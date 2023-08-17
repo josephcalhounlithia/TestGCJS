@@ -41,7 +41,7 @@ const onChangeElement = (qSelector, cb) => {
 /* --------METHODS--------*/
 /* -----------------------*/
 function createTemplate() {
-  console.log(compareData);
+  console.log("createTemplate");
   let html = `
 <div class="card-compare--header-wrapper">    
     <div class="card-compare--header">
@@ -730,6 +730,7 @@ function drawCarDetailRow(args) {
 }
 
 function drawGreenScoreBox(score) {
+  console.log("GC Score " + score)
   let html = '';
   let green = `<img class="big-leaf" src="https://assets-global.website-files.com/6238640c74e61b4d447f965f/623b23057582ddb7fd18e23e_leaf-green.svg" loading="lazy" alt="">`;
   let grey = `<img class="big-leaf" src="https://assets-global.website-files.com/6238640c74e61b4d447f965f/623b22eeb0db51ba54f37df2_leaf-grey.svg" loading="lazy" alt="">`;
