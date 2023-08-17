@@ -41,6 +41,7 @@ const onChangeElement = (qSelector, cb) => {
 /* --------METHODS--------*/
 /* -----------------------*/
 function createTemplate() {
+  console.log(compareData);
   let html = `
 <div class="card-compare--header-wrapper">    
     <div class="card-compare--header">
@@ -84,7 +85,7 @@ ${createCompareItem('Seats', drawCarSeats, compareData)}
     </div>
 
         <!-- Performance metrics -->
-        ${createCompareItem('Total range', drawTotalRange, compareData)}
+        ${createCompareItem('BLAHTotal range', drawTotalRange, compareData)}
         ${createCompareItem('Electric range', drawElectricRange, compareData)}
         ${createCompareItem('Battery capacity', drawCarBatteryCap, compareData)}
         ${createCompareItem('Time to charge 120v', drawCarChargeTime, compareData)}
