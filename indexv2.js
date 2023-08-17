@@ -715,6 +715,7 @@ function drawFavItem(e) {
 }
 
 function drawCarDetailRow(args) {
+  console.log("drawcardetailrow");
   let html = '';
   let defaults = { label: '', value: 'n/a', type: '' };
 
@@ -730,7 +731,7 @@ function drawCarDetailRow(args) {
 }
 
 function drawGreenScoreBox(score) {
-  console.log("GC Score " + score)
+  console.log("GC Score " + score);
   let html = '';
   let green = `<img class="big-leaf" src="https://assets-global.website-files.com/6238640c74e61b4d447f965f/623b23057582ddb7fd18e23e_leaf-green.svg" loading="lazy" alt="">`;
   let grey = `<img class="big-leaf" src="https://assets-global.website-files.com/6238640c74e61b4d447f965f/623b22eeb0db51ba54f37df2_leaf-grey.svg" loading="lazy" alt="">`;
@@ -901,6 +902,7 @@ function closeFavCarDetails() {
 }
 
 function openCarDetails(e) {
+  console.log("opendetails");
   closeAll();
   currentSeletedCar = {};
   if (!isCheckboxesInit) {
