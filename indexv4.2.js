@@ -1,4 +1,4 @@
-console.log("Hi Tam v2.1");
+console.log("Hi Tam v4.2");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -904,6 +904,7 @@ function closeFavCarDetails() {
 
 function openCarDetails(e) {
   console.log("opendetails");
+  console.log(e);
   closeAll();
   currentSeletedCar = {};
   if (!isCheckboxesInit) {
