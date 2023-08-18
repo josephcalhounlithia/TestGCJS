@@ -1,4 +1,4 @@
-console.log("Hi Tam v4.2");
+console.log("Hi Tam v4.3");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -913,7 +913,7 @@ function openCarDetails(e) {
 
   // block scope
   let el = $(e).siblings($('.car-card-details'));
-  let id = $(e).find('[fs-cmsfilter-field="vehicle-id"]').html();
+  let id = $(e).find('[fs-cmsfilter-field="vehicle-uvc"]').html();
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
   console.log("CarUVC is " + id);
