@@ -1,4 +1,4 @@
-console.log("Hi Tam v4.4");
+console.log("Hi Tam v4.5");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -928,6 +928,10 @@ function openCarDetails(e) {
   }
   if (fuelType == 'Hybrid' || fuelType == 'Gas'){
     console.log(fuelType);
+    $('[gc-data-variable="battery_capacity"]').hide();
+  }
+  else {
+    $('[gc-data-variable="battery_capacity"]').show();
   }
   // build fav on car details
   $('[gc-fav-mount-id="' + id + '"]').append(
