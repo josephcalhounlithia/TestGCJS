@@ -1,4 +1,4 @@
-console.log("Hi Tam v4.3");
+console.log("Hi Tam v4.4");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -904,7 +904,6 @@ function closeFavCarDetails() {
 
 function openCarDetails(e) {
   console.log("opendetails");
-  console.log(e);
   closeAll();
   currentSeletedCar = {};
   if (!isCheckboxesInit) {
@@ -916,7 +915,9 @@ function openCarDetails(e) {
   let id = $(e).find('[fs-cmsfilter-field="vehicle-uvc"]').html();
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
+  let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
   console.log("CarUVC is " + id);
+  console.log("CarType is " + fuelType);
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-fav-mount-id="' + id + '"]').empty();
@@ -925,7 +926,9 @@ function openCarDetails(e) {
     console.log("I was able to find it.")
     console.log($('[gc-greenbox="' + id + '"]').length)
   }
-
+  if (fuelType == 'Hybrid' || fuelType == 'Gas'){
+    console.log(fuelType);
+  }
   // build fav on car details
   $('[gc-fav-mount-id="' + id + '"]').append(
     `<img gc-id="${id}" onclick="maintainWishList(null)" class="new-fav-image" src="${favImageState(
