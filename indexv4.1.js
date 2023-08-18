@@ -915,12 +915,15 @@ function openCarDetails(e) {
   let id = $(e).find('[fs-cmsfilter-field="vehicle-id"]').html();
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
-
+  console.log("CarUVC is " + id);
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-fav-mount-id="' + id + '"]').empty();
-  console.log("appending");
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
+  if ($('[gc-greenbox="' + id + '"]').length > 0){
+    console.log("I was able to find it.")
+    console.log($('[gc-greenbox="' + id + '"]').length)
+  }
 
   // build fav on car details
   $('[gc-fav-mount-id="' + id + '"]').append(
