@@ -1,4 +1,4 @@
-console.log("Hi Tam v2");
+console.log("Hi Tam v2.1");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -762,10 +762,11 @@ function drawGreenScoreBox(score) {
   } else if (s === 0) {
     leafs = `${grey}${grey}${grey}${grey}${grey}`;
   } else {
+    console.log("ended in else");
     html = `n/a`;
     return html;
   }
-
+  console.log(leafs);
   return (html = `<div class="greenscore-score-box">
                         <div class="score-box-icons-wrapper">${leafs}</div>
                         <div class="score-box-value"><div>${score} out of 5</div></div>
@@ -918,6 +919,7 @@ function openCarDetails(e) {
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-fav-mount-id="' + id + '"]').empty();
+  console.log("appending");
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
 
   // build fav on car details
