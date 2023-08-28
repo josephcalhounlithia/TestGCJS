@@ -1,4 +1,4 @@
-console.log("Hi Tam v4.5");
+console.log("Hi Tam v4.6");
 
 /* -----------------------*/
 /* --------GLOBAL--------*/
@@ -923,16 +923,24 @@ function openCarDetails(e) {
   $('[gc-fav-mount-id="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
   if ($('[gc-greenbox="' + id + '"]').length > 0){
-    console.log("I was able to find it.")
     console.log($('[gc-greenbox="' + id + '"]').length)
   }
   if (fuelType == 'Hybrid' || fuelType == 'Gas'){
     console.log(fuelType);
     $('[gc-data-variable="battery_capacity"]').hide();
+    $('[gc-data-variable="time_to_charge_120"]').hide();
+    $('[gc-data-variable="time_to_charge_240"]').hide();
+    $('[gc-data-variable="kwh_per_mile"]').hide();
+    $('[gc-data-label="fuel_efficiency"]').text("MPG")
   }
   else {
     $('[gc-data-variable="battery_capacity"]').show();
+    $('[gc-data-variable="time_to_charge_120"]').show();
+    $('[gc-data-variable="time_to_charge_240"]').show();
+    $('[gc-data-variable="kwh_per_mile"]').show();
+    $('[gc-data-label="fuel_efficiency"]').text("MPGe")
   }
+
   // build fav on car details
   $('[gc-fav-mount-id="' + id + '"]').append(
     `<img gc-id="${id}" onclick="maintainWishList(null)" class="new-fav-image" src="${favImageState(
