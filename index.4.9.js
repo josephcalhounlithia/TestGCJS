@@ -8,7 +8,7 @@ var isDebug = false;
 //var favOpenState = false;
 //var compareOpenState = false;
 //var compareBarOpenState = false;
-var isCheckboxesInit = false;
+//var isCheckboxesInit = false;
 var eventTriggered = 0;
 var currentSeletedCar = {};
 
@@ -902,9 +902,9 @@ function openCarDetails(e) {
   console.log("opendetails");
   closeAll();
   currentSeletedCar = {};
-  if (!isCheckboxesInit) {
-    initCheckboxBinding();
-  }
+//   if (!isCheckboxesInit) {
+//     initCheckboxBinding();
+//   }
 
   // block scope
   let el = $(e).siblings($('.car-card-details'));
@@ -1228,7 +1228,7 @@ function initGreenCars() {
       filterInstance.listInstance.on('renderitems', (renderedItems) => {
         stopwatchStart('observer_fnsweet_render');
         checkFilterState();
-        initCheckboxes();
+        //initCheckboxes();
         initCarSingleTab();
         //initViewFav();
         initCloseOutside();
