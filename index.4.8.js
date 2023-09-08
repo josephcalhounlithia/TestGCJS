@@ -201,9 +201,6 @@ function drawCarHeader(data) {
                         <div class="car-span-content">${e.model}</div>
                     </div>
                 </div>
-                <img gc-id="${e.id}" onclick="maintainWishList(${
-      e.id
-    })" class="new-fav-image" src="${favImageState(e.id)}">
             </div>`;
   });
   return html;
@@ -919,7 +916,7 @@ function openCarDetails(e) {
   console.log("CarType is " + fuelType);
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
-  $('[gc-fav-mount-id="' + id + '"]').empty();
+  //$('[gc-fav-mount-id="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
   if ($('[gc-greenbox="' + id + '"]').length > 0){
     console.log($('[gc-greenbox="' + id + '"]').length)
@@ -941,11 +938,11 @@ function openCarDetails(e) {
   }
 
   // build fav on car details
-  $('[gc-fav-mount-id="' + id + '"]').append(
-    `<img gc-id="${id}" onclick="maintainWishList(null)" class="new-fav-image" src="${favImageState(
-      id
-    )}">`
-  );
+//   $('[gc-fav-mount-id="' + id + '"]').append(
+//     `<img gc-id="${id}" onclick="maintainWishList(null)" class="new-fav-image" src="${favImageState(
+//       id
+//     )}">`
+//   );
 
   //make visual changes to ui
   el.css('display', 'flex');
@@ -1020,8 +1017,8 @@ function closeCarDetails() {
 function closeAll() {
   currentSeletedCar = {};
   closeCarDetails();
-  closeCompare();
-  closeFavCarDetails();
+  //closeCompare();
+  //closeFavCarDetails();
 }
 
 function collapseDetails() {
@@ -1169,20 +1166,20 @@ function initCarSingleTab() {
 //   }
 // }
 
-function initCompareHeaderAccordion() {
-  $('.compare--header').off();
-  $('.compare--header').on('click', function (event) {
-    let el = $(event.target);
-    singleTriggerAccordion(el);
-  });
-}
+// function initCompareHeaderAccordion() {
+//   $('.compare--header').off();
+//   $('.compare--header').on('click', function (event) {
+//     let el = $(event.target);
+//     singleTriggerAccordion(el);
+//   });
+// }
 
-function initCompareCollapseAll() {
-  $('.gc-collapse-btn').off();
-  $('.gc-collapse-btn').on('click', function () {
-    $(this).hasClass('gc-accordion-expanded') ? collapseDetails() : expandDetails();
-  });
-}
+// function initCompareCollapseAll() {
+//   $('.gc-collapse-btn').off();
+//   $('.gc-collapse-btn').on('click', function () {
+//     $(this).hasClass('gc-accordion-expanded') ? collapseDetails() : expandDetails();
+//   });
+// }
 
 // function initViewFav() {
 //   $('.view-favorites-wrapper, [gc-event="openFav"]').off();
@@ -1214,11 +1211,11 @@ function initCloseDetails() {
 }
 
 function initGreenCars() {
-  mountWishList();
+  //mountWishList();
   checkFilterState(1);
-  initViewFav();
+  //initViewFav();
   initTram();
-  initCompareBar();
+  //initCompareBar();
 
   window.fsAttributes = window.fsAttributes || [];
   window.fsAttributes.push([
@@ -1233,11 +1230,11 @@ function initGreenCars() {
         checkFilterState();
         initCheckboxes();
         initCarSingleTab();
-        initViewFav();
+        //initViewFav();
         initCloseOutside();
         initCloseDetails();
         handelFilterResults();
-        updateCompareLabel();
+        //updateCompareLabel();
         $('[gc-event="format"]').each((i, e) => reFormat($(e)));
         $('[gc-event="drawLeafs"]').each((i, e) => replaceGcScore($(e)));
         stopwatchEnd('observer_fnsweet_render');
@@ -1249,53 +1246,53 @@ function initGreenCars() {
 /* -----WISHLIST----*/
 /* -----------------------*/
 
-function maintainWishList(id) {
-  let funcId = 'maintainWishList';
-  stopwatchStart(funcId);
+// function maintainWishList(id) {
+//   let funcId = 'maintainWishList';
+//   stopwatchStart(funcId);
 
-  let fromCarDetails = false;
+//   let fromCarDetails = false;
 
-  if (!id) {
-    id = currentSeletedCar.id;
-    fromCarDetails = true;
-  }
+//   if (!id) {
+//     id = currentSeletedCar.id;
+//     fromCarDetails = true;
+//   }
 
-  let flag = wishList.find((x) => {
-    return x.id == id;
-  });
+//   let flag = wishList.find((x) => {
+//     return x.id == id;
+//   });
 
-  if (!flag) {
-    if (!fromCarDetails) {
-      let result = compareData.filter((el) => {
-        return el.id == id;
-      });
-      wishList.push(result[0]);
-    } else {
-      wishList.push(currentSeletedCar);
-    }
-  }
+//   if (!flag) {
+//     if (!fromCarDetails) {
+//       let result = compareData.filter((el) => {
+//         return el.id == id;
+//       });
+//       wishList.push(result[0]);
+//     } else {
+//       wishList.push(currentSeletedCar);
+//     }
+//   }
 
-  $('[gc-id="' + id + '"]').attr(
-    'src',
-    'https://uploads-ssl.webflow.com/6238640c74e61b4d447f965f/624ed35c7d78d72367447989_State%3Dselected.svg'
-  );
+//   $('[gc-id="' + id + '"]').attr(
+//     'src',
+//     'https://uploads-ssl.webflow.com/6238640c74e61b4d447f965f/624ed35c7d78d72367447989_State%3Dselected.svg'
+//   );
 
-  if (flag) {
-    wishList = wishList.filter((el) => {
-      return el.id != id;
-    });
+//   if (flag) {
+//     wishList = wishList.filter((el) => {
+//       return el.id != id;
+//     });
 
-    $('[gc-id="' + id + '"]').attr(
-      'src',
-      'https://uploads-ssl.webflow.com/6238640c74e61b4d447f965f/624ed35c17266b5ec5f27bb8_State%3Ddefault.svg'
-    );
-  }
+//     $('[gc-id="' + id + '"]').attr(
+//       'src',
+//       'https://uploads-ssl.webflow.com/6238640c74e61b4d447f965f/624ed35c17266b5ec5f27bb8_State%3Ddefault.svg'
+//     );
+//   }
 
-  localStorage.setItem('wishListCookie', JSON.stringify(wishList));
-  mountWishList();
+//   localStorage.setItem('wishListCookie', JSON.stringify(wishList));
+//   mountWishList();
 
-  stopwatchEnd(funcId);
-}
+//   stopwatchEnd(funcId);
+// }
 
 // function mountWishList() {
 //   let funcId = 'mountWishList';
