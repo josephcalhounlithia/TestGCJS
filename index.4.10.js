@@ -908,7 +908,10 @@ function openCarDetails(e) {
 
   // block scope
   let el = $(e).siblings($('.car-card-details'));
-  let id = $(e).find('[fs-cmsfilter-field="vehicle-uvc"]').html();
+  let idElementString = $(e).find('[fs-cmsfilter-field="vehicle-uvc"]').html();
+  let tempIDElement = document.createElement('div');
+  tempIDElement.innerHTML = idElementString;
+  let id = tempIDElement.textContent;
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
   let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
