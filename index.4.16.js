@@ -910,8 +910,10 @@ function openCarDetails(e) {
   let id = tempIDElement.textContent;
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
-  let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
+  //let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
   let inventoryStatus = $(e).find('[gc-data-variable="inventory_status"]').html();
+  var customDisabledButtonClass = '.gc-disabled-button { background-color: grey !important; pointer-events: none; }';
+  $('<style>').text(customDisabledButtonClass).appendTo('head');
   if (inventoryStatus < 1){
     var $link = $('[gc-element-variable="shop_button"]');
 
@@ -919,12 +921,14 @@ function openCarDetails(e) {
     $link.on('click', function(event) {
       event.preventDefault(); // Prevent the default behavior (opening a new page)
     });
+    $link.addClass('gc-disabled-button');
   }
   else{
     var $link = $('[gc-element-variable="shop_button"]');
 
     // Prevent the link from being clicked
     $link.off('click');
+    $link.removeClass('gc-disabled-button');
   }
   console.log("CarUVC is " + id);
   console.log("CarType is " + fuelType);
@@ -932,21 +936,21 @@ function openCarDetails(e) {
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
-  if (fuelType == 'Hybrid' || fuelType == 'Gas'){
-    console.log(fuelType);
-    $('[gc-data-variable="battery_capacity"]').hide();
-    $('[gc-data-variable="time_to_charge_120"]').hide();
-    $('[gc-data-variable="time_to_charge_240"]').hide();
-    $('[gc-data-variable="kwh_per_mile"]').hide();
-    $('[gc-data-label="fuel_efficiency"]').text("MPG")
-  }
-  else {
-    $('[gc-data-variable="battery_capacity"]').show();
-    $('[gc-data-variable="time_to_charge_120"]').show();
-    $('[gc-data-variable="time_to_charge_240"]').show();
-    $('[gc-data-variable="kwh_per_mile"]').show();
-    $('[gc-data-label="fuel_efficiency"]').text("MPGe")
-  }
+  //if (fuelType == 'Hybrid' || fuelType == 'Gas'){
+    //console.log(fuelType);
+    //$('[gc-data-variable="battery_capacity"]').hide();
+    //$('[gc-data-variable="time_to_charge_120"]').hide();
+    //$('[gc-data-variable="time_to_charge_240"]').hide();
+    //$('[gc-data-variable="kwh_per_mile"]').hide();
+    //$('[gc-data-label="fuel_efficiency"]').text("MPG")
+  //}
+  //else {
+    //$('[gc-data-variable="battery_capacity"]').show();
+    //$('[gc-data-variable="time_to_charge_120"]').show();
+    //$('[gc-data-variable="time_to_charge_240"]').show();
+    //$('[gc-data-variable="kwh_per_mile"]').show();
+    //$('[gc-data-label="fuel_efficiency"]').text("MPGe")
+  //}
 
   // build fav on car details
 //   $('[gc-fav-mount-id="' + id + '"]').append(
@@ -1153,7 +1157,24 @@ function initCarSingleTab() {
     let state = getCarDetailState(el);
     if (state === 'true') {
       closeAll();
-    } else {
+    } else 
+    {
+      let fuelType = $(el).find('[fs-cmsfilter-field="gc-type"]').html();
+      if (fuelType == 'Hybrid' || fuelType == 'Gas'){
+        console.log(fuelType);
+        $('[gc-data-variable="battery_capacity"]').hide();
+        $('[gc-data-variable="time_to_charge_120"]').hide();
+        $('[gc-data-variable="time_to_charge_240"]').hide();
+        $('[gc-data-variable="kwh_per_mile"]').hide();
+        $('[gc-data-label="fuel_efficiency"]').text("MPG")
+      }
+      else {
+        $('[gc-data-variable="battery_capacity"]').show();
+        $('[gc-data-variable="time_to_charge_120"]').show();
+        $('[gc-data-variable="time_to_charge_240"]').show();
+        $('[gc-data-variable="kwh_per_mile"]').show();
+        $('[gc-data-label="fuel_efficiency"]').text("MPGe")
+      }
       openCarDetails(el);
     }
   });
