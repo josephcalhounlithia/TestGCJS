@@ -920,6 +920,12 @@ function openCarDetails(e) {
       event.preventDefault(); // Prevent the default behavior (opening a new page)
     });
   }
+  else{
+    var $link = $('[gc-element-variable="shop_button"]');
+
+    // Prevent the link from being clicked
+    $link.off('click');
+  }
   console.log("CarUVC is " + id);
   console.log("CarType is " + fuelType);
   console.log("InventoryStatus is " + inventoryStatus);
