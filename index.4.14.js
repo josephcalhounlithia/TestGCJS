@@ -913,8 +913,12 @@ function openCarDetails(e) {
   let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
   let inventoryStatus = $(e).find('[gc-data-variable="inventory_status"]').html();
   if (inventoryStatus < 1){
-    var $button = $('[gc-element-variable="shop_button"]');
-    $button.attr('disabled','disabled');
+    var $link = $('[gc-element-variable="shop_button"]');
+
+    // Prevent the link from being clicked
+    $link.on('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior (opening a new page)
+    });
   }
   console.log("CarUVC is " + id);
   console.log("CarType is " + fuelType);
