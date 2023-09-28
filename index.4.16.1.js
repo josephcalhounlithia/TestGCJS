@@ -931,7 +931,7 @@ function openCarDetails(e) {
     $link.removeClass('gc-disabled-button');
   }
   console.log("CarUVC is " + id);
-  console.log("CarType is " + fuelType);
+  //console.log("CarType is " + fuelType);
   console.log("InventoryStatus is " + inventoryStatus);
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
