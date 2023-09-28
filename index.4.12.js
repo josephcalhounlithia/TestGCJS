@@ -913,7 +913,7 @@ function openCarDetails(e) {
   let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
   let inventoryStatus = $(e).find('[gc-data-variable="inventory_status"]').html();
   if (inventoryStatus < 1){
-    $('[gc-element-variable="shop_button"]').hide();
+    $('[gc-element-variable="shop_button"]').prop('disabled',true);
   }
   console.log("CarUVC is " + id);
   console.log("CarType is " + fuelType);
