@@ -899,12 +899,8 @@ function isMobileWidth(f) {
 // }
 
 function openCarDetails(e) {
-  console.log("opendetails");
   closeAll();
   currentSeletedCar = {};
-//   if (!isCheckboxesInit) {
-//     initCheckboxBinding();
-//   }
 
   // block scope
   let el = $(e).siblings($('.car-card-details'));
@@ -915,15 +911,16 @@ function openCarDetails(e) {
   let score = $(e).find('[fs-cmsfilter-field="new-green-score"]').html();
   let lineItem = $(el).closest($('.cars-database-collection-item')).html();
   let fuelType = $(e).find('[fs-cmsfilter-field="gc-type"]').html();
+  let inventoryStatus = $(e).find('[gc-data-variable="inventory_status"]').html();
+  if (inventoryStatus < 1){
+    $('[gc-element-variable="shop_button"]').hide();
+  }
   console.log("CarUVC is " + id);
   console.log("CarType is " + fuelType);
+  console.log("InventoryStatus is " + inventoryStatus);
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
-  //$('[gc-fav-mount-id="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
-  if ($('[gc-greenbox="' + id + '"]').length > 0){
-    console.log($('[gc-greenbox="' + id + '"]').length)
-  }
   if (fuelType == 'Hybrid' || fuelType == 'Gas'){
     console.log(fuelType);
     $('[gc-data-variable="battery_capacity"]').hide();
