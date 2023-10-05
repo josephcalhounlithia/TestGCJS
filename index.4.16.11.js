@@ -942,19 +942,19 @@ function openCarDetails(e) {
   if (inputFieldYear.length > 0) {
     inputFieldYear.val(year);
   } else {
-    console.log("Input field not found");
+    console.log("Input field year not found");
   }
   let inputFieldMake = $('input[gc-element-variable="contact_us_make"]');
   if (inputFieldMake.length > 0) {
     inputFieldMake.val(make);
   } else {
-    console.log("Input field not found");
+    console.log("Input field make not found");
   }
   let inputFieldModel = $('input[gc-element-variable="contact_us_model"]');
   if (inputFieldModel.length > 0) {
     inputFieldModel.val(model);
   } else {
-    console.log("Input field not found");
+    console.log("Input field model not found");
   }
   //$('[gc-element-variable="contact_us_year"]').text(year);
   //$('[gc-element-variable="contact_us_make"]').text(make);
