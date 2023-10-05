@@ -936,7 +936,7 @@ function openCarDetails(e) {
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
-  $('[gc-element-variable="contact_us_button"]').on('click', populateContactUsForm);
+  //$('[gc-element-variable="contact_us_button"]').on('click', populateContactUsForm);
   
 
   // build fav on car details
@@ -958,13 +958,13 @@ function openCarDetails(e) {
   //handle global state
   setCarDetailState(e);
   currentSeletedCar = constructDataObj(id, lineItem);
-    let year = $(e).find('[cms-filter-field="year"]').html();
-    let make = $(e).find('[cms-filter-field="brand"]').html();
+    let year = $(e).find('[gc-data-variable="year"]').html();
+    let make = $(e).find('[gc-data-variable="make"]').html();
     let model = currentSeletedCar["model"];
     
     let label_text = "Vehicle: " + year + " " + make + " " + model;
     console.log(label_text);
-    //$('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
+    $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
 }
 
 function closeCarDetails() {
