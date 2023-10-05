@@ -1578,11 +1578,12 @@ function populateAssumptionsText() {
 }
 
 function populateContactUsForm() {
-    let year = $('[cms-filter-field="year"]').html();
-    let make = $('[cms-filter-field="brand"]').html();
-    let model = $('[gc-data-variable="model"]').html();
+    let el = $(event.target).closest($('.cars-tab-single-tab'));
+    let year = $(el).find('[cms-filter-field="year"]').html();
+    let make = $(el).find('[cms-filter-field="brand"]').html();
+    let model = $(el).find('[gc-data-variable="model"]').html();
     
     let label_text = "Vehicle: " + year + " " + make + " " + model
     $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
-    
+
 }
