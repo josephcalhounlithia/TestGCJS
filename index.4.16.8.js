@@ -930,6 +930,17 @@ function openCarDetails(e) {
     $link.off('click');
     $link.removeClass('gc-disabled-button');
   }
+  let year = $(e).find('[gc-data-variable="year"]').html();
+  let make = $(e).find('[gc-data-variable="make"]').html();
+  let model = $(e).find('[gc-data-variable="model"]').html();
+    
+  let label_text = "Vehicle: " + year + " " + make + " " + model;
+    console.log(label_text);
+  $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text);
+  $('[gc-element-variable="contact_us_year"]').value = year;
+  $('[gc-element-variable="contact_us_make"]').value = make;
+  $('[gc-element-variable="contact_us_model"]').value = model;
+  
   console.log("CarUVC is " + id);
   //console.log("CarType is " + fuelType);
   console.log("InventoryStatus is " + inventoryStatus);
@@ -958,13 +969,6 @@ function openCarDetails(e) {
   //handle global state
   setCarDetailState(e);
   currentSeletedCar = constructDataObj(id, lineItem);
-    let year = $(e).find('[gc-data-variable="year"]').html();
-    let make = $(e).find('[gc-data-variable="make"]').html();
-    let model = $(e).find('[gc-data-variable="model"]').html();
-    
-    let label_text = "Vehicle: " + year + " " + make + " " + model;
-    console.log(label_text);
-    $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
 }
 
 function closeCarDetails() {
