@@ -937,9 +937,9 @@ function openCarDetails(e) {
   let label_text = "Vehicle: " + year + " " + make + " " + model;
     console.log(label_text);
   $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text);
-  $('[gc-element-variable="contact_us_year"]').value = year;
-  $('[gc-element-variable="contact_us_make"]').value = make;
-  $('[gc-element-variable="contact_us_model"]').value = model;
+  $('[gc-element-variable="contact_us_year"]').text(year);
+  $('[gc-element-variable="contact_us_make"]').text(make);
+  $('[gc-element-variable="contact_us_model"]').text(model);
   
   console.log("CarUVC is " + id);
   //console.log("CarType is " + fuelType);
