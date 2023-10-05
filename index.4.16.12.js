@@ -899,6 +899,7 @@ function isMobileWidth(f) {
 // }
 
 function openCarDetails(e) {
+  console.log("openCarDetails");
   closeAll();
   currentSeletedCar = {};
 
@@ -966,7 +967,9 @@ function openCarDetails(e) {
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
-  //$('[gc-element-variable="contact_us_button"]').on('click', populateContactUsForm);
+  $('[gc-element-variable="contact_us_button"]').on('click', function(){
+    $('[gc-element-variable="contact_us_button"]').show();
+  });
   
 
   // build fav on car details
@@ -992,6 +995,7 @@ function openCarDetails(e) {
 
 function closeCarDetails() {
   //block scope
+  console.log("closeCarDetails");
   let el = $('[gc-state="true"]').siblings($('.car-card-details'));
 
   //make visual changes to ui
