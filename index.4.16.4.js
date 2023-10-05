@@ -1579,6 +1579,7 @@ function populateAssumptionsText() {
 
 function populateContactUsForm() {
     let el = $(event.target).closest($('.cars-tab-single-tab'));
+    console.log(el);
     let year = $(el).find('[cms-filter-field="year"]').html();
     let make = $(el).find('[cms-filter-field="brand"]').html();
     let model = $(el).find('[gc-data-variable="model"]').html();
