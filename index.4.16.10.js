@@ -937,9 +937,28 @@ function openCarDetails(e) {
   let label_text = "Vehicle: " + year + " " + make + " " + model;
     console.log(label_text);
   $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text);
-  $('[gc-element-variable="contact_us_year"]').text(year);
-  $('[gc-element-variable="contact_us_make"]').text(make);
-  $('[gc-element-variable="contact_us_model"]').text(model);
+
+  let inputFieldYear = $('input[gc-element-variable="contact_us_year"]');
+  if (inputFieldYear.length > 0) {
+    inputFieldYear.val(year);
+  } else {
+    console.log("Input field not found");
+  }
+  let inputFieldMake = $('input[gc-element-variable="contact_us_make"]');
+  if (inputFieldMake.length > 0) {
+    inputFieldMake.val(make);
+  } else {
+    console.log("Input field not found");
+  }
+  let inputFieldModel = $('input[gc-element-variable="contact_us_model"]');
+  if (inputFieldModel.length > 0) {
+    inputFieldModel.val(model);
+  } else {
+    console.log("Input field not found");
+  }
+  //$('[gc-element-variable="contact_us_year"]').text(year);
+  //$('[gc-element-variable="contact_us_make"]').text(make);
+  //$('[gc-element-variable="contact_us_model"]').text(model);
   
   console.log("CarUVC is " + id);
   //console.log("CarType is " + fuelType);
