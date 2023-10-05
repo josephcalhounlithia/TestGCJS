@@ -960,7 +960,7 @@ function openCarDetails(e) {
   currentSeletedCar = constructDataObj(id, lineItem);
     let year = $(e).find('[gc-data-variable="year"]').html();
     let make = $(e).find('[gc-data-variable="make"]').html();
-    let model = currentSeletedCar["model"];
+    let model = $(e).find('[gc-data-variable="model"]').html();
     
     let label_text = "Vehicle: " + year + " " + make + " " + model;
     console.log(label_text);
