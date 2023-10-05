@@ -958,6 +958,13 @@ function openCarDetails(e) {
   //handle global state
   setCarDetailState(e);
   currentSeletedCar = constructDataObj(id, lineItem);
+    let year = $(e).find('[cms-filter-field="year"]').html();
+    let make = $(e).find('[cms-filter-field="brand"]').html();
+    let model = currentSeletedCar["model"];
+    
+    let label_text = "Vehicle: " + year + " " + make + " " + model;
+    console.log(label_text);
+    //$('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
 }
 
 function closeCarDetails() {
@@ -1579,7 +1586,6 @@ function populateAssumptionsText() {
 
 function populateContactUsForm() {
     let el = $(event.target).closest($('.cars-tab-single-tab'));
-    console.log(el);
     let year = $(el).find('[cms-filter-field="year"]').html();
     let make = $(el).find('[cms-filter-field="brand"]').html();
     let model = $(el).find('[gc-data-variable="model"]').html();
