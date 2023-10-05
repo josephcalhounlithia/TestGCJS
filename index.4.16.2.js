@@ -936,21 +936,8 @@ function openCarDetails(e) {
   //draw greenbox score
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
-  //if (fuelType == 'Hybrid' || fuelType == 'Gas'){
-    //console.log(fuelType);
-    //$('[gc-data-variable="battery_capacity"]').hide();
-    //$('[gc-data-variable="time_to_charge_120"]').hide();
-    //$('[gc-data-variable="time_to_charge_240"]').hide();
-    //$('[gc-data-variable="kwh_per_mile"]').hide();
-    //$('[gc-data-label="fuel_efficiency"]').text("MPG")
-  //}
-  //else {
-    //$('[gc-data-variable="battery_capacity"]').show();
-    //$('[gc-data-variable="time_to_charge_120"]').show();
-    //$('[gc-data-variable="time_to_charge_240"]').show();
-    //$('[gc-data-variable="kwh_per_mile"]').show();
-    //$('[gc-data-label="fuel_efficiency"]').text("MPGe")
-  //}
+  $('[gc-element-variable="contact_us_button"]').on('click', populateContactUsForm);
+  
 
   // build fav on car details
 //   $('[gc-fav-mount-id="' + id + '"]').append(
@@ -1165,7 +1152,9 @@ function initCarSingleTab() {
         $('[gc-data-variable="battery_capacity"]').hide();
         $('[gc-data-variable="time_to_charge_120"]').hide();
         $('[gc-data-variable="time_to_charge_240"]').hide();
+        $('[gc-data-variable="electric_range"]').hide();
         $('[gc-data-variable="kwh_per_mile"]').hide();
+
         $('[gc-data-label="fuel_efficiency"]').text("MPG")
       }
       else {
@@ -1447,6 +1436,7 @@ $(document).ready(function () {
   /* -----CALL INIT METHODS----*/
   /* -----------------------*/
   initGreenCars();
+  //populateAssumptionsText();
   //viewport_set();
 
   /* -----------------------*/
@@ -1462,6 +1452,8 @@ $(document).ready(function () {
   $('#gc-mobile-filter').on('click', function () {
     $('#comparing-bar').css('z-index', '0');
   });
+
+  
 
 //   $('#compare-button').on('click', function () {
 //     closeCarDetails();
@@ -1554,4 +1546,43 @@ function stopwatchStart(funcName) {
 
 function stopwatchEnd(funcName) {
   if (isDebug) console.timeEnd(funcName);
+}
+
+function populateAssumptionsText() {
+    let assumptionselement = $('[gc-element-variable="assumptions_text"]');
+    let miles_driven = $('[gc-data-variable="miles_driven"]');
+    let interest_rate_new = $('[gc-data-variable="interest_rate_new"]');
+    let interest_rate_used = $('[gc-data-variable="interest_rate_used"]');
+    let loan_length = $('[gc-data-variable="loan_length"]');
+    let loan_down_payment = $('[gc-data-variable="loan_down_payment"]');
+    let gas_price = $('[gc-data-variable="gas_price"]');
+    let electricity_price = $('[gc-data-variable="electricity_price"]');
+
+    let assumptions_text = 'Assumptions: ' +
+    miles_driven + ' miles driven annually; ' +
+    loan_length + ' monthly payments; ' + 
+    loan_down_payment + '% down payment, ' + 
+    interest_rate_new + '% interest rate for new vehicles, ' + 
+    interest_rate_used + '% interest rate for used vehicles, does not include incentive savings. Energy costs are ' + 
+    electricity_price + ' kWh and ' + 
+    gas_price + '/gallon of gasoline. ' +
+    'Estimated vehicle prices based on historical pricing data from Driveway.com and the manufacturer suggested retail prices. ' +
+    'Emissions, charge times, and vehicle efficiency based on EPA estimates. PHEVs assume driving time 7% on electricity and 93% on fuel.';
+    // Check if the element exists
+    if (assumptionselement.length > 0) {
+        // Get the text content of the element and assign it to the assumptionsText variable
+        assumptionselement.text(assumptions_text);
+    } else {
+        console.log("Could not find the assumptions subtext");
+    }
+}
+
+function populateContactUsForm() {
+    let year = $('[cms-filter-field="year"]').html();
+    let make = $('[cms-filter-field="brand"]').html();
+    let model = $('[gc-data-variable="model"]').html();
+    
+    let label_text = "Vehicle: " + year + " " + make + " " + model
+    $('[gc-element-variable="contact_us_vehicle_info"]').text(label_text)
+    
 }
