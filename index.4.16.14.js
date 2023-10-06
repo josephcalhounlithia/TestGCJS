@@ -968,7 +968,8 @@ function openCarDetails(e) {
   $('[gc-greenbox="' + id + '"]').empty();
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
   $('[gc-element-variable="contact_us_button"]').on('click', function(){
-    $('[gc-element-variable="contact_us_form"]').show();
+    console.log("Contact Us button click.");
+    $('[gc-element-variable="contact_us_form_container"]').show();
   });
   
 
