@@ -969,7 +969,7 @@ function openCarDetails(e) {
   $('[gc-greenbox="' + id + '"]').append(drawGreenScoreBox(score));
   $('[gc-element-variable="contact_us_button"]').on('click', function(){
     console.log("Contact Us button click.");
-    $('[gc-element-variable="contact_us_form_container"]').show();
+    $('[gc-element-variable="contact_us_form_container"]').css('display', 'flex');
   });
   
 
