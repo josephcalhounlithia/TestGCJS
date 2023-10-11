@@ -1197,6 +1197,8 @@ function initCarSingleTab() {
         $('[gc-data-variable="time_to_charge_120"]').show();
         $('[gc-data-variable="time_to_charge_240"]').show();
         $('[gc-data-variable="kwh_per_mile"]').show();
+        $('[gc-data-variable="electric_range"]').show();
+        
         $('[gc-data-label="fuel_efficiency"]').text("MPGe")
       }
       openCarDetails(el);
