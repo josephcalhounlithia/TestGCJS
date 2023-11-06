@@ -1,4 +1,4 @@
-console.log("loaded BG test script v19");
+console.log("loaded BG test script v20");
 /* -----------------------*/
 /* --------GLOBAL--------*/
 /* -----------------------*/
@@ -575,16 +575,18 @@ function initTram() {
 function initSearchBox() {
   $('[gc-data-element="search"]').on('input', function(event) {
     var searchText = $(this).val().toLowerCase(); // Get the current value and convert to lower case for case-insensitive comparison
-    console.log("Search term = "+searchText);
-
+    var numberOfChecks = 0;
     $('.cars-tab-single-tab').each(function() { // Loop through the car tabs
-      // Retrieve the year, make, and model from the current tab
-      let year = $(this).find('[gc-data-variable="year"]').html().toLowerCase();
-      let make = $(this).find('[gc-data-variable="make"]').html().toLowerCase();
-      let model = $(this).find('[gc-data-variable="model"]').html().toLowerCase();
-      
-      // Check if the year, make, or model contains the search text
-      if(year.includes(searchText) || make.includes(searchText) || model.includes(searchText)) {
+      // Retrieve the year, make, and model from within .cars-tab-rest-filters-hidden
+      numberOfChecks++;
+      let year = $(this).find('.cars-tab-rest-filters-hidden [gc-data-variable="year"]').html();
+      let make = $(this).find('.cars-tab-rest-filters-hidden [gc-data-variable="make"]').html();
+      let model = $(this).find('.cars-tab-rest-filters-hidden [gc-data-variable="model"]').html();
+      console.log("check number "+numberOfChecks);
+      // Check if the year, make, or model is not undefined and if it contains the search text
+      if((year && year.toLowerCase().includes(searchText)) || 
+         (make && make.toLowerCase().includes(searchText)) || 
+         (model && model.toLowerCase().includes(searchText))) {
         $(this).show(); // If yes, show the tab
       } else {
         $(this).hide(); // If no, hide the tab
@@ -592,6 +594,7 @@ function initSearchBox() {
     });
   });
 }
+
 
 
 function initCarSingleTab() {
