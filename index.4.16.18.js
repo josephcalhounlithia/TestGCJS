@@ -1,4 +1,4 @@
-
+console.log("loaded BG test script v18");
 /* -----------------------*/
 /* --------GLOBAL--------*/
 /* -----------------------*/
@@ -575,6 +575,7 @@ function initTram() {
 function initSearchBox() {
   $('[gc-data-element="search"]').on('input', function(event) {
     var searchText = $(this).val().toLowerCase(); // Get the current value and convert to lower case for case-insensitive comparison
+    console.log("Search term = "+searchText);
 
     $('.cars-tab-single-tab').each(function() { // Loop through the car tabs
       // Retrieve the year, make, and model from the current tab
