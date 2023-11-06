@@ -1,4 +1,4 @@
-console.log("loaded BG test script v18");
+console.log("loaded BG test script v19");
 /* -----------------------*/
 /* --------GLOBAL--------*/
 /* -----------------------*/
@@ -705,6 +705,7 @@ $(document).ready(function () {
   /* -----CALL INIT METHODS----*/
   /* -----------------------*/
   initGreenCars();
+  initSearchBox();
 
   /* -----------------------*/
   /* -----EVENT HANDLERS----*/
